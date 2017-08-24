@@ -1,6 +1,8 @@
 services:
     salesforce.http.client:
         class: GenesisGlobal\Salesforce\Http\HttpfulClient
+        arguments:
+            - "%salesforce.proxy%"
 
     salesforce.content_parser:
         class: GenesisGlobal\Salesforce\SalesforceBundle\Service\ContentParser

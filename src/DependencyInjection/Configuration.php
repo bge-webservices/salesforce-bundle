@@ -2,7 +2,6 @@
 
 namespace GenesisGlobal\Salesforce\SalesforceBundle\DependencyInjection;
 
-
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
@@ -65,6 +64,8 @@ class Configuration implements ConfigurationInterface
                             ->cannotBeEmpty()
                         ->end()
                     ->end()
+                ->end()
+                ->scalarNode('proxy')->defaultNull()->end()
                 ->end()
             ->end()
         ;
