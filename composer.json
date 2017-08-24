@@ -8,8 +8,8 @@
     "license": "MIT",
     "repositories": [
         {
-            "type": "git",
-            "url": "https://github.com/bge-webservices/salesforce.git"
+            "type": "vcs",
+            "url": "https://github.com/bge-webservices/salesforce"
         }
     ],
     "require": {

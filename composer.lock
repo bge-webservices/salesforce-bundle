@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "6a56abadb62d416d434abbe8fa6a5a51",
+    "content-hash": "f5c9fdf5b0562b5e4d29381b1b07f95a",
     "packages": [
         {
             "name": "genesis-global/salesforce",
@@ -13,6 +13,12 @@
                 "type": "git",
                 "url": "https://github.com/bge-webservices/salesforce.git",
                 "reference": "0ee67b01ad930f32844e70f79d9ef30767a6794d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bge-webservices/salesforce/zipball/0ee67b01ad930f32844e70f79d9ef30767a6794d",
+                "reference": "0ee67b01ad930f32844e70f79d9ef30767a6794d",
+                "shasum": ""
             },
             "require": {
                 "nategood/httpful": "^0.2.20"
@@ -35,6 +41,9 @@
             "keywords": [
                 "salesforce"
             ],
+            "support": {
+                "source": "https://github.com/bge-webservices/salesforce/tree/master"
+            },
             "time": "2017-08-24T12:53:34+00:00"
         },
         {
