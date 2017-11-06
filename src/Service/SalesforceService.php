@@ -2,7 +2,6 @@
 
 namespace GenesisGlobal\Salesforce\SalesforceBundle\Service;
 
-
 use GenesisGlobal\Salesforce\Client\SalesforceClientInterface;
 use GenesisGlobal\Salesforce\SalesforceBundle\Exception\CreateSobjectException;
 use GenesisGlobal\Salesforce\SalesforceBundle\Sobject\SobjectInterface;
@@ -18,6 +17,11 @@ class SalesforceService implements SalesforceServiceInterface
      * constant for sobjects resources
      */
     const SOBJECTS_ACTION = 'sobjects';
+
+    /**
+     * constant for query resource
+     */
+    const QUERY_ACTION = 'query';
 
     /**
      * @var SalesforceClientInterface
@@ -37,8 +41,8 @@ class SalesforceService implements SalesforceServiceInterface
     public function __construct(
         SalesforceClientInterface $salesforceClient,
         ContentParserInterface $contentParser
-    )
-    {
+    ) {
+
         $this->client = $salesforceClient;
         $this->contentParser = $contentParser;
     }
@@ -88,11 +92,8 @@ class SalesforceService implements SalesforceServiceInterface
 
         $result = [];
         if ($sobjectMeta->isSuccess() && isset($sobjectMeta->getContent()->fields)) {
-
             foreach ($sobjectMeta->getContent()->fields as $field) {
-
-                if ( in_array($field->name, $fieldNames) && isset($field->picklistValues)) {
-
+                if (in_array($field->name, $fieldNames) && isset($field->picklistValues)) {
                     $result[$field->name] = $this->parsePickListValues($field->picklistValues);
                 }
             }
@@ -125,9 +126,24 @@ class SalesforceService implements SalesforceServiceInterface
     public function getBySobjectId($name, $id, $fields)
     {
         $params = [ $id ] + [ 'fields' => $fields ];
+
         $response = $this->client->get(
             $this->createAction($name, $params)
         );
+        return $response;
+    }
+
+    /**
+     * @param $query
+     * @return Response
+     */
+    public function getByQuery($query)
+    {
+        $response = $this->client->get(
+            self::QUERY_ACTION,
+            $query
+        );
+
         return $response;
     }
 
@@ -190,18 +206,15 @@ class SalesforceService implements SalesforceServiceInterface
         $querySeparator = '?';
         if (is_array($params)) {
             foreach ($params as $k => $v) {
-
                 # if numeric just put it after slash
                 if (is_numeric($k)) {
                     $uri .= '/' . $v;
-                }
-                # if string, use more fun logic
+                } # if string, use more fun logic
                 else {
-
                     # if value is array, implode values by comas
                     if (is_array($v)) {
                         $uri .= $querySeparator . $k . '=' . implode(',', $v);
-                    }else {
+                    } else {
                         $uri .= $querySeparator . $k . '=' . $v;
                     }
                     $querySeparator = '&';
@@ -210,5 +223,4 @@ class SalesforceService implements SalesforceServiceInterface
         }
         return $uri;
     }
-
 }

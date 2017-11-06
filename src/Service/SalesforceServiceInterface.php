@@ -42,6 +42,12 @@ interface SalesforceServiceInterface
     public function getBySobjectId($name, $id, $fields);
 
     /**
+     * @param $query
+     * @return Response
+     */
+    public function getByQuery($query);
+
+    /**
      * @param $name
      * @param $externalIdName
      * @param $externalIdValue
