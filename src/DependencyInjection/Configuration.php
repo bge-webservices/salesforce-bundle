@@ -66,7 +66,6 @@ class Configuration implements ConfigurationInterface
                     ->end()
                 ->end()
                 ->scalarNode('proxy')->defaultNull()->end()
-                ->end()
             ->end()
         ;
         return $builder;
