@@ -63,3 +63,4 @@ services:
             - "@salesforce.client"
             - "@salesforce.content_parser"
             - "@salesforce.sobject_creator"
+        public: true
