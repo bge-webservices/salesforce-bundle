@@ -1,4 +1,9 @@
 services:
+    _defaults:
+        autowire: false
+        autoconfigure: false
+        public: true
+        
     salesforce.http.client:
         class: GenesisGlobal\Salesforce\Http\HttpfulClient
         arguments:
@@ -63,4 +68,3 @@ services:
             - "@salesforce.client"
             - "@salesforce.content_parser"
             - "@salesforce.sobject_creator"
-        public: true
