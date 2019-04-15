@@ -13,9 +13,9 @@
         }
     ],
     "require": {
-        "symfony/http-kernel": "^3.4",
-        "symfony/config": "^3.4",
-        "symfony/dependency-injection": "^3.4",
+        "symfony/http-kernel": ">=3.4",
+        "symfony/config": ">=3.4",
+        "symfony/dependency-injection": ">=3.4",
         "genesis-global/salesforce": "dev-master"
     },
     "require-dev": {
